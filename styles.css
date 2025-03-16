@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.timeline {
+    text-align: center;
+    padding: 2rem;
+}
+
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: white;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-left: 5px solid #333;
+    width: 50%;
+}
+
+.timeline-item .date {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.timeline-item img, .event img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+    border-radius: 8px;
+    max-height: 300px; /* Фіксована висота для нормального відображення */
+}
+
+#events, #quiz {
+    padding: 2rem;
+    background: white;
+    margin: 2rem auto;
+    width: 60%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: white;
+}
+
+/* Скрипт для перевірки тесту */
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let score = 0;
+
+        let answer1 = document.getElementById("q1").value;
+        if (answer1 === "1914") score++;
+
+        let answer2 = document.getElementById("q2").value.trim().toLowerCase();
+        if (answer2 === "наполеон") score++;
+
+        alert("Ваш результат: " + score + "/2 правильних відповідей!");
+    });
+</script>
