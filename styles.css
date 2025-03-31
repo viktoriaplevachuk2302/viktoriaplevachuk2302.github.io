@@ -1,3 +1,4 @@
+/* === Глобальні стилі === */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -83,9 +84,7 @@ nav ul li a {
     background-color: #056820;
     border-radius: 5px;
 }
-
 /* === СЕКЦІЯ ІСТОРИЧНИХ ПОДІЙ === */
-/* Центрування заголовка */
 #events {
     text-align: center;
     padding: 2rem 0;
@@ -100,33 +99,40 @@ nav ul li a {
     width: 100%;
 }
 
-/* Контейнер для подій */
+/* Контейнер для подій - фіксуємо вивід рівно трьох подій в ряд */
 .events-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивна сітка */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Рівномірний розподіл */
     gap: 20px;
-    justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    border: 2px solid rgb(8, 107, 17);
 }
 
 /* Оформлення карток подій */
 .event {
+    width: calc(33.333% - 20px); /* Рівно 3 події в рядок */
+    flex-basis: calc(33.333% - 20px); /* Додаємо flex-basis для кращої сумісності */
+    min-width: 250px; /* Трохи зменшуємо мінімальну ширину */
     border: 1px solid #ccc;
     padding: 15px;
     border-radius: 10px;
     background: #f9f9f9;
     text-align: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(8, 151, 20);
+    box-sizing: border-box; /* Гарантує, що padding не змінює розміри */
+    margin-bottom: 20px; /* Додаємо відступ знизу */
 }
 
 /* Фіксований розмір зображень */
 .event img {
-    width: 100%; /* Автоматичне підлаштування під ширину контейнера */
-    max-width: 250px; /* Максимальна ширина */
-    height: 180px; /* Фіксована висота */
-    object-fit: cover; /* Обрізає зображення, зберігаючи пропорції */
+    width: 100%;
+    max-width: 250px;
+    height: 180px;
+    object-fit: cover;
     border-radius: 8px;
 }
 
@@ -147,24 +153,24 @@ nav ul li a {
 }
 
 /* === Адаптивність === */
-@media (max-width: 900px) {
-    .events-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 події в рядок */
+/* Змінюємо медіа-запити для забезпечення 3 події в ряд на ноутбуках */
+@media (max-width: 1200px) and (min-width: 901px) {
+    .event {
+        width: calc(33.333% - 20px); /* Все ще 3 події в рядок */
+        flex-basis: calc(33.333% - 20px);
+    }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+    .event {
+        width: calc(50% - 20px); /* 2 події в рядок */
+        flex-basis: calc(50% - 20px);
     }
 }
 
 @media (max-width: 600px) {
-    .events-container {
-        grid-template-columns: 1fr; /* 1 подія в рядок на маленьких екранах */
+    .event {
+        width: 100%; /* 1 подія в рядок */
+        flex-basis: 100%;
     }
 }
-
-/* === Футер === */
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: #1aa345;
-    color: white;
-}
-
-
