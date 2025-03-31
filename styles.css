@@ -103,8 +103,9 @@ nav ul li a {
 
 /* Контейнер для подій */
 .events-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 події в рядок */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -114,6 +115,9 @@ nav ul li a {
 
 /* Оформлення карток подій */
 .event {
+    flex: 1 1 calc(33.333% - 20px); /* 3 події в рядок */
+    min-width: 300px;
+    max-width: 350px;
     border: 1px solid #ccc;
     padding: 15px;
     border-radius: 10px;
@@ -121,7 +125,7 @@ nav ul li a {
     text-align: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border: 2px solid rgb(8, 151, 20);
-    box-sizing: border-box; /* Гарантує, що padding не змінює розміри */
+    box-sizing: border-box;
 }
 
 /* Фіксований розмір зображень */
@@ -151,14 +155,14 @@ nav ul li a {
 
 /* === Адаптивність === */
 @media (max-width: 900px) {
-    .events-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 події в рядок */
+    .event {
+        flex: 1 1 calc(50% - 20px); /* 2 події в рядок */
     }
 }
 
 @media (max-width: 600px) {
-    .events-container {
-        grid-template-columns: repeat(1, 1fr); /* 1 подія в рядок */
+    .event {
+        flex: 1 1 100%; /* 1 подія в рядок */
     }
 }
 
