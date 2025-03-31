@@ -1,4 +1,4 @@
-/* === Глобальні стилі === */
+/* === Глобальні стилі === */ 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -86,7 +86,6 @@ nav ul li a {
 }
 
 /* === СЕКЦІЯ ІСТОРИЧНИХ ПОДІЙ === */
-/* Центрування заголовка */
 #events {
     text-align: center;
     padding: 2rem 0;
@@ -99,13 +98,13 @@ nav ul li a {
     font-size: 2rem;
     margin-bottom: 1rem;
     width: 100%;
+    font-weight: bold;
 }
 
 /* Контейнер для подій */
 .events-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Рівномірний розподіл */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 події в рядок */
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -113,11 +112,8 @@ nav ul li a {
     border: 2px solid rgb(8, 107, 17);
 }
 
-
 /* Оформлення карток подій */
 .event {
-    width: calc(33.333% - 20px); /* 3 події в рядок */
-    min-width: 280px;
     border: 1px solid #ccc;
     padding: 15px;
     border-radius: 10px;
@@ -127,7 +123,6 @@ nav ul li a {
     border: 2px solid rgb(8, 151, 20);
     box-sizing: border-box; /* Гарантує, що padding не змінює розміри */
 }
-
 
 /* Фіксований розмір зображень */
 .event img {
@@ -156,14 +151,14 @@ nav ul li a {
 
 /* === Адаптивність === */
 @media (max-width: 900px) {
-    .event {
-        width: calc(50% - 20px); /* 2 події в рядок */
+    .events-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 події в рядок */
     }
 }
 
 @media (max-width: 600px) {
-    .event {
-        width: 100%; /* 1 подія в рядок */
+    .events-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 подія в рядок */
     }
 }
 
@@ -174,6 +169,7 @@ footer {
     background: #1aa345;
     color: white;
 }
+
 #quiz {
     text-align: center;
     padding: 2rem;
@@ -183,16 +179,19 @@ footer {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+
 .quiz-item {
     margin-bottom: 15px;
     text-align: left;
 }
+
 input, select {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
 button {
     background-color: #179609;
     color: white;
@@ -202,6 +201,7 @@ button {
     cursor: pointer;
     font-size: 1rem;
 }
+
 button:hover {
     background-color: #058903;
 }
